@@ -68,3 +68,8 @@ flutter:
     androidX: true
     androidPackage: com.eKYC.add_to_app_flutter_module
     iosBundleIdentifier: com.eKYC.addToAppFlutterModule
+
+
+flutter_boot:
+  git:
+    url: 'https://github.com/supavitham/addToAppEkyc'
