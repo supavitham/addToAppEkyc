@@ -1,0 +1,128 @@
+import 'package:add_to_app_flutter_module/screen/e_kyc_screen.dart';
+import 'package:add_to_app_flutter_module/screen/start_screen.dart';
+import 'package:add_to_app_flutter_module/utility/lang/translations.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:loading_indicator/loading_indicator.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  configLoading();
+  await Firebase.initializeApp();
+  await dotenv.load(fileName: "assets/.env");
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+      title: 'Flutter Demo',
+      translations: Messages(),
+      locale: const Locale('th', 'TH'),
+      fallbackLocale: const Locale('th', 'TH'),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const EKYCScreen(),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+void configLoading() {
+  EasyLoading.instance
+    ..loadingStyle = EasyLoadingStyle.light
+  // ..maskType = EasyLoadingMaskType.custom
+  // ..maskColor = Colors.black.withOpacity(0.1)
+    ..radius = 10
+    ..contentPadding = const EdgeInsets.all(14)
+    ..indicatorWidget = Container(
+      height: 50,
+      width: 50,
+      decoration: const BoxDecoration(color: Colors.transparent, shape: BoxShape.circle),
+      child: const LoadingIndicator(
+        indicatorType: Indicator.ballRotateChase,
+        colors: [Color(0xFFFF9F02)],
+        strokeWidth: 4,
+      ),
+    )
+    ..userInteractions = false
+    ..dismissOnTap = false;
+}
+
+// class MyHomePage extends StatefulWidget {
+//   const MyHomePage({Key? key, required this.title}) : super(key: key);
+//
+//   final String title;
+//
+//   @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
+//
+// class _MyHomePageState extends State<MyHomePage> with AfterLayoutMixin {
+//   int _counter = 0;
+//   String? hostRegister;
+//   String? hostGateway;
+//   String? authorization2;
+//
+//   void _incrementCounter() {
+//     setState(() {
+//       _counter++;
+//     });
+//   }
+//
+//   // Future<void> loadENV() async {
+//   //   await dotenv.load(fileName: ".env");
+//   // }
+//
+//   @override
+//   Future<void> afterFirstLayout(BuildContext context) async {
+//     // await loadENV();
+//     hostRegister = dotenv.env['host3003'];
+//     hostGateway = dotenv.env['host3006'];
+//     authorization2 = dotenv.env['authorization2'];
+//     print("hostRegister22>>>> $hostRegister -- $hostGateway -- $authorization2");
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//      return Scaffold(
+//       appBar: AppBar(
+//         // Here we take the value from the MyHomePage object that was created by
+//         // the App.build method, and use it to set our appbar title.
+//         title: Text(widget.title),
+//       ),
+//       body: Center(
+//         // Center is a layout widget. It takes a single child and positions it
+//         // in the middle of the parent.
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             const Text(
+//               'test You have pushed the button this many times:',
+//             ),
+//             Text(
+//               '$_counter',
+//               style: Theme.of(context).textTheme.headline4,
+//             ),
+//             Text("${hostRegister ?? ""} ${hostGateway ?? ""}${authorization2 ?? ""}")
+//           ],
+//         ),
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: _incrementCounter,
+//         tooltip: 'Increment',
+//         child: const Icon(Icons.add),
+//       ), // This trailing comma makes auto-formatting nicer for build methods.
+//     );
+//   }
+// }
