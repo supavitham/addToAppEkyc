@@ -2,7 +2,7 @@
 //
 // import 'package:device_info_plus/device_info_plus.dart';
 // import 'package:flutter/services.dart';
-// import 'package:gb_e_kyc/api/storeState.dart';
+// import 'package:add_to_app_flutter_module/api/storeState.dart';
 //
 // Future<void> initDeviceSerial() async {
 //   try {

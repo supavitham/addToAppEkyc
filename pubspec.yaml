@@ -1,20 +1,6 @@
 name: add_to_app_flutter_module
 description: A new Flutter project.
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-#
-# This version is used _only_ for the Runner app, which is used if you just do
-# a `flutter run` or a `flutter make-host-app-editable`. It has no impact
-# on any other native host app that you embed your Flutter project into.
 version: 1.0.0+1
 
 environment:
@@ -36,7 +22,7 @@ dependencies:
   flutter_bloc: ^7.3.3
   flutter_dotenv: ^5.0.2
   flutter_easyloading: ^3.0.3
-  firebase_core: ^1.13.1
+  firebase_core: ^1.14.1
   get: ^4.6.1
   google_ml_kit: ^0.7.2
   http: ^0.13.3
@@ -62,6 +48,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
+    - assets/thai-province-data.json
     - .env
 
   module:
@@ -70,6 +58,6 @@ flutter:
     iosBundleIdentifier: com.eKYC.addToAppFlutterModule
 
 
-flutter_boot:
-  git:
-    url: 'https://github.com/supavitham/addToAppEkyc'
+#flutter_boot:
+#  git:
+#    url: 'https://github.com/supavitham/addToAppEkyc'
