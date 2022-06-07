@@ -74,33 +74,26 @@ class _EKYCScreenState extends State<EKYCScreen> {
             Container(
               margin: EdgeInsets.all(12),
               padding: EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(40)),
+              decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(40)),
               child: Obx(() => Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ...MultiLanguage.values.map((e) {
-                        bool selected =
-                            e == _eKYCController.currentLanguage.value;
+                        bool selected = e == _eKYCController.currentLanguage.value;
                         var index = MultiLanguage.values.indexOf(e);
                         return Row(
                           children: [
                             GestureDetector(
                               onTap: () {
                                 _eKYCController.currentLanguage.value = e;
-                                _eKYCController.currentLanguage.value ==
-                                        MultiLanguage.th
-                                    ? Get.updateLocale(Locale('th', 'TH'))
-                                    : Get.updateLocale(Locale('en', 'EN'));
+                                _eKYCController.currentLanguage.value == MultiLanguage.th ? Get.updateLocale(Locale('th', 'TH')) : Get.updateLocale(Locale('en', 'EN'));
                               },
                               child: Container(
                                 height: 30,
                                 width: 30,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage(
-                                        'packages/add_to_app_flutter_module/assets/images/${index == 0 ? selected ? "Thailand-flag" : "Thailand-flag-bw" : selected ? "United_Kingdom" : "United_Kingdom_bw"}.png'),
+                                    image: AssetImage('packages/add_to_app_flutter_module/packages/add_to_app_flutter_module/assets/images/${index == 0 ? selected ? "Thailand-flag" : "Thailand-flag-bw" : selected ? "United_Kingdom" : "United_Kingdom_bw"}.png'),
                                     fit: BoxFit.fill,
                                   ),
                                   shape: BoxShape.circle,
@@ -110,9 +103,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
                             if (index == 0)
                               Text(
                                 "  ${selected ? "TH" : "EN"}  ",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500),
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
                               )
                           ],
                         );
@@ -224,36 +215,27 @@ class _EKYCScreenState extends State<EKYCScreen> {
           _eKYCController.cPhoneNumber.clear();
           _eKYCController.hasErrorOTP.value = false;
           // remove step 2
-          _eKYCController.processStepKYC
-              .removeWhere((element) => element.select == nowStep);
+          _eKYCController.processStepKYC.removeWhere((element) => element.select == nowStep);
           // update status step 1
-          _eKYCController.processStepKYC
-              .firstWhere((p0) => p0.select == StepKYC.one)
-              .statusDone = false;
+          _eKYCController.processStepKYC.firstWhere((p0) => p0.select == StepKYC.one).statusDone = false;
           _eKYCController.selectStepKYC.value = StepKYC.one;
           break;
         }
       case StepKYC.three:
         {
           // remove step 3
-          _eKYCController.processStepKYC
-              .removeWhere((element) => element.select == nowStep);
+          _eKYCController.processStepKYC.removeWhere((element) => element.select == nowStep);
           // update status step 2
-          _eKYCController.processStepKYC
-              .firstWhere((p0) => p0.select == StepKYC.two)
-              .statusDone = false;
+          _eKYCController.processStepKYC.firstWhere((p0) => p0.select == StepKYC.two).statusDone = false;
           _eKYCController.selectStepKYC.value = StepKYC.two;
           break;
         }
       case StepKYC.four:
         {
           // remove step 4
-          _eKYCController.processStepKYC
-              .removeWhere((element) => element.select == nowStep);
+          _eKYCController.processStepKYC.removeWhere((element) => element.select == nowStep);
           // update status step 3
-          _eKYCController.processStepKYC
-              .firstWhere((p0) => p0.select == StepKYC.three)
-              .statusDone = false;
+          _eKYCController.processStepKYC.firstWhere((p0) => p0.select == StepKYC.three).statusDone = false;
           _eKYCController.selectStepKYC.value = StepKYC.three;
           break;
         }
@@ -265,9 +247,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
       case StepKYC.one:
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(top: BorderSide(color: Colors.grey[300]!))),
+          decoration: BoxDecoration(color: Colors.white, border: Border(top: BorderSide(color: Colors.grey[300]!))),
           child: Row(children: [
             Expanded(
               child: ButtonCancel(
@@ -280,8 +260,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
               child: ButtonConfirm(
                 text: 'continue'.tr,
                 onPressed: () async {
-                  if (_formKeyPhoneNumber.currentState!.validate() &&
-                      _eKYCController.cPhoneNumber.text.length == 12) {
+                  if (_formKeyPhoneNumber.currentState!.validate() && _eKYCController.cPhoneNumber.text.length == 12) {
                     await _eKYCController.autoSubmitPhoneNumber();
                   }
                 },
@@ -292,9 +271,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
       case StepKYC.two:
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(top: BorderSide(color: Colors.grey[300]!))),
+          decoration: BoxDecoration(color: Colors.white, border: Border(top: BorderSide(color: Colors.grey[300]!))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -306,12 +283,9 @@ class _EKYCScreenState extends State<EKYCScreen> {
                     _eKYCController.cPhoneNumber.clear();
                     _eKYCController.hasErrorOTP.value = false;
                     // back step 1
-                    _eKYCController.processStepKYC.removeWhere(
-                        (element) => element.select == StepKYC.two);
+                    _eKYCController.processStepKYC.removeWhere((element) => element.select == StepKYC.two);
                     _eKYCController.selectStepKYC.value = StepKYC.one;
-                    _eKYCController.processStepKYC
-                        .firstWhere((p0) => p0.select == StepKYC.one)
-                        .statusDone = false;
+                    _eKYCController.processStepKYC.firstWhere((p0) => p0.select == StepKYC.one).statusDone = false;
                   },
                 ),
               ),
@@ -329,9 +303,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
         return _infoController.acceptScanCardIDWidget.value
             ? Container(
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border(top: BorderSide(color: Colors.grey[300]!))),
+                decoration: BoxDecoration(color: Colors.white, border: Border(top: BorderSide(color: Colors.grey[300]!))),
                 child: Row(children: [
                   Expanded(
                     child: ButtonConfirm(
@@ -351,58 +323,36 @@ class _EKYCScreenState extends State<EKYCScreen> {
                         ).then((data) {
                           try {
                             if (data != null && !data['ocrFailedAll']) {
-                              _infoController.personalInfo.value.idCard =
-                                  data['ocrFrontID'];
-                              _infoController.personalInfo.value.firstName =
-                                  data['ocrFrontName'];
-                              _infoController.personalInfo.value.lastName =
-                                  data['ocrFrontSurname'];
-                              _infoController.personalInfo.value.address =
-                                  data['ocrFrontAddress'];
-                              _infoController.personalInfo.value.filterAddress =
-                                  data['ocrFilterAddress'];
-                              _infoController.personalInfo.value.birthday =
-                                  data['ocrBirthDay'];
-                              _infoController.personalInfo.value.ocrBackLaser =
-                                  data['ocrBackLaser'];
+                              _infoController.personalInfo.value.idCard = data['ocrFrontID'];
+                              _infoController.personalInfo.value.firstName = data['ocrFrontName'];
+                              _infoController.personalInfo.value.lastName = data['ocrFrontSurname'];
+                              _infoController.personalInfo.value.address = data['ocrFrontAddress'];
+                              _infoController.personalInfo.value.filterAddress = data['ocrFilterAddress'];
+                              _infoController.personalInfo.value.birthday = data['ocrBirthDay'];
+                              _infoController.personalInfo.value.ocrBackLaser = data['ocrBackLaser'];
 
-                              _infoController.idCardController.text =
-                                  data['ocrFrontID'];
-                              _infoController.firstNameController.text =
-                                  data['ocrFrontName'];
-                              _infoController.lastNameController.text =
-                                  data['ocrFrontSurname'];
-                              _infoController.addressController.text =
-                                  data['ocrFrontAddress'];
-                              _infoController.birthdayController.text =
-                                  data['ocrBirthDay'];
-                              _infoController.ocrBackLaser.value =
-                                  data['ocrBackLaser'];
-                              _infoController.ocrFailedAll.value =
-                                  data['ocrFailedAll'];
-                              _infoController.imgFrontIDCard =
-                                  File(data['frontIDPath']);
-                              _infoController.imgBackIDCard =
-                                  File(data['backIDPath']);
-                              _infoController.acceptScanCardIDWidget.value =
-                                  false;
-                              _infoController.imgFrontIDCardBytes =
-                                  data['frontIDPathFile'];
-                              _infoController.imgBackIDCardBytes =
-                                  data['backIDPathFile'];
+                              _infoController.idCardController.text = data['ocrFrontID'];
+                              _infoController.firstNameController.text = data['ocrFrontName'];
+                              _infoController.lastNameController.text = data['ocrFrontSurname'];
+                              _infoController.addressController.text = data['ocrFrontAddress'];
+                              _infoController.birthdayController.text = data['ocrBirthDay'];
+                              _infoController.ocrBackLaser.value = data['ocrBackLaser'];
+                              _infoController.ocrFailedAll.value = data['ocrFailedAll'];
+                              _infoController.imgFrontIDCard = File(data['frontIDPath']);
+                              _infoController.imgBackIDCard = File(data['backIDPath']);
+                              _infoController.acceptScanCardIDWidget.value = false;
+                              _infoController.imgFrontIDCardBytes = data['frontIDPathFile'];
+                              _infoController.imgBackIDCardBytes = data['backIDPathFile'];
                             } else if (data != null && data['ocrFailedAll']) {
                               _infoController.personalInfo.value.idCard = '';
                               _infoController.personalInfo.value.firstName = '';
                               _infoController.personalInfo.value.lastName = '';
                               _infoController.personalInfo.value.address = '';
                               _infoController.personalInfo.value.birthday = '';
-                              _infoController.personalInfo.value.ocrBackLaser =
-                                  '';
+                              _infoController.personalInfo.value.ocrBackLaser = '';
 
-                              _infoController.ocrFailedAll.value =
-                                  data['ocrFailedAll'];
-                              _infoController.acceptScanCardIDWidget.value =
-                                  false;
+                              _infoController.ocrFailedAll.value = data['ocrFailedAll'];
+                              _infoController.acceptScanCardIDWidget.value = false;
                             }
                           } catch (e) {}
                         });
@@ -448,8 +398,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
                               _kycController.isLoading.value = false;
                             });
                           }
-                          _timer =
-                              Timer.periodic(Duration(seconds: 3), (Timer t) {
+                          _timer = Timer.periodic(Duration(seconds: 3), (Timer t) {
                             if (_kycController.isSuccess.value)
                               _timer?.cancel();
                             else
@@ -459,13 +408,11 @@ class _EKYCScreenState extends State<EKYCScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.photo_camera_outlined,
-                                color: Colors.white),
+                            Icon(Icons.photo_camera_outlined, color: Colors.white),
                             SizedBox(width: 10),
                             Text(
                               'camera'.tr,
-                              style:
-                                  TextStyle(fontSize: 17, color: Colors.white),
+                              style: TextStyle(fontSize: 17, color: Colors.white),
                             )
                           ],
                         ),
@@ -490,19 +437,14 @@ class _EKYCScreenState extends State<EKYCScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CameraScanIDCard(
-                                    titleAppbar: 'Selfie_ID_Card'.tr,
-                                    enableButton: true,
-                                    isFront: true,
-                                    noFrame: true),
+                                builder: (context) => CameraScanIDCard(titleAppbar: 'Selfie_ID_Card'.tr, enableButton: true, isFront: true, noFrame: true),
                               ),
                             ).then(
                               (v) async {
                                 if (v != null) {
                                   int fileSize = await getFileSize(filepath: v);
                                   if (_infoController.pathSelfie.isNotEmpty) {
-                                    await File(_infoController.pathSelfie.value)
-                                        .delete();
+                                    await File(_infoController.pathSelfie.value).delete();
                                   }
                                   if (!isImage(v)) {
                                     showDialog(
@@ -512,8 +454,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
                                         return DeleteDialog(
                                           title: "Extension_not_correct".tr,
                                           textConfirm: "ok".tr,
-                                          onPressedConfirm: () =>
-                                              Navigator.pop(context),
+                                          onPressedConfirm: () => Navigator.pop(context),
                                         );
                                       },
                                     );
@@ -525,14 +466,12 @@ class _EKYCScreenState extends State<EKYCScreen> {
                                         return DeleteDialog(
                                           title: "File_size_larger".tr,
                                           textConfirm: "ok".tr,
-                                          onPressedConfirm: () =>
-                                              Navigator.pop(context),
+                                          onPressedConfirm: () => Navigator.pop(context),
                                         );
                                       },
                                     );
                                   } else {
-                                    _kycController.detailKYCWidget.value =
-                                        false;
+                                    _kycController.detailKYCWidget.value = false;
                                     _infoController.pathSelfie.value = v;
                                   }
                                 }
@@ -564,17 +503,12 @@ class _EKYCScreenState extends State<EKYCScreen> {
                                 files: [
                                   http.MultipartFile.fromBytes(
                                     'image',
-                                    _infoController.imgFrontIDCard!
-                                        .readAsBytesSync(),
-                                    filename: _infoController
-                                        .imgFrontIDCard!.path
-                                        .split("/")
-                                        .last,
+                                    _infoController.imgFrontIDCard!.readAsBytesSync(),
+                                    filename: _infoController.imgFrontIDCard!.path.split("/").last,
                                   )
                                 ],
                               );
-                              _infoController.fileNameFrontID.value =
-                                  resFrontID['response']['data']['file_name'];
+                              _infoController.fileNameFrontID.value = resFrontID['response']['data']['file_name'];
 
                               final resBackID = await PostAPI().callFormData(
                                 url: '$hostRegister/users/upload_file',
@@ -582,17 +516,12 @@ class _EKYCScreenState extends State<EKYCScreen> {
                                 files: [
                                   http.MultipartFile.fromBytes(
                                     'image',
-                                    _infoController.imgBackIDCard!
-                                        .readAsBytesSync(),
-                                    filename: _infoController
-                                        .imgBackIDCard!.path
-                                        .split("/")
-                                        .last,
+                                    _infoController.imgBackIDCard!.readAsBytesSync(),
+                                    filename: _infoController.imgBackIDCard!.path.split("/").last,
                                   )
                                 ],
                               );
-                              _infoController.fileNameBackID.value =
-                                  resBackID['response']['data']['file_name'];
+                              _infoController.fileNameBackID.value = resBackID['response']['data']['file_name'];
 
                               final resSelfieID = await PostAPI().callFormData(
                                 url: '$hostRegister/users/upload_file',
@@ -600,26 +529,18 @@ class _EKYCScreenState extends State<EKYCScreen> {
                                 files: [
                                   http.MultipartFile.fromBytes(
                                     'image',
-                                    File(_infoController.pathSelfie.value)
-                                        .readAsBytesSync(),
-                                    filename:
-                                        File(_infoController.pathSelfie.value)
-                                            .path
-                                            .split("/")
-                                            .last,
+                                    File(_infoController.pathSelfie.value).readAsBytesSync(),
+                                    filename: File(_infoController.pathSelfie.value).path.split("/").last,
                                   )
                                 ],
                               );
-                              _infoController.fileNameSelfieID.value =
-                                  resSelfieID['response']['data']['file_name'];
+                              _infoController.fileNameSelfieID.value = resSelfieID['response']['data']['file_name'];
 
                               await _infoController.imgFrontIDCard!.delete();
                               await _infoController.imgBackIDCard!.delete();
-                              await File(_infoController.pathSelfie.value)
-                                  .delete();
+                              await File(_infoController.pathSelfie.value).delete();
 
-                              var resCreateUser =
-                                  await _infoController.createUser();
+                              var resCreateUser = await _infoController.createUser();
 
                               _kycController.isLoading.value = false;
 
@@ -652,20 +573,13 @@ class _EKYCScreenState extends State<EKYCScreen> {
                                     avatar: false,
                                     onPressedConfirm: () {
                                       Navigator.pop(context);
-                                      _kycController.detailKYCWidget.value =
-                                          false;
+                                      _kycController.detailKYCWidget.value = false;
                                       _infoController.pathSelfie.value = '';
                                       // remove step 4
-                                      _eKYCController.processStepKYC
-                                          .removeWhere((element) =>
-                                              element.select == StepKYC.four);
+                                      _eKYCController.processStepKYC.removeWhere((element) => element.select == StepKYC.four);
                                       // update status step 3
-                                      _eKYCController.processStepKYC
-                                          .firstWhere((p0) =>
-                                              p0.select == StepKYC.three)
-                                          .statusDone = false;
-                                      _eKYCController.selectStepKYC.value =
-                                          StepKYC.three;
+                                      _eKYCController.processStepKYC.firstWhere((p0) => p0.select == StepKYC.three).statusDone = false;
+                                      _eKYCController.selectStepKYC.value = StepKYC.three;
 
                                       // setState(() {
                                       //   selectedStep = 2;
@@ -690,12 +604,9 @@ class _EKYCScreenState extends State<EKYCScreen> {
   Widget _buildWidgetStep(StepKYC e) {
     return Obx(() {
       var item;
-      var checkItem = _eKYCController.processStepKYC
-          .where((element) => element.select == e)
-          .isNotEmpty;
+      var checkItem = _eKYCController.processStepKYC.where((element) => element.select == e).isNotEmpty;
       if (checkItem) {
-        item =
-            _eKYCController.processStepKYC.firstWhere((p0) => p0.select == e);
+        item = _eKYCController.processStepKYC.firstWhere((p0) => p0.select == e);
       }
       return !checkItem
           ? _buildUnselectedStep()
@@ -740,8 +651,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
           Color.fromRGBO(16, 107, 171, 1),
         ]),
       ),
-      child:
-          const Center(child: Icon(Icons.check, color: Colors.white, size: 16)),
+      child: const Center(child: Icon(Icons.check, color: Colors.white, size: 16)),
     );
   }
 
@@ -751,8 +661,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
       height: 22,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border:
-            Border.all(width: 1, color: const Color.fromRGBO(2, 65, 109, 1)),
+        border: Border.all(width: 1, color: const Color.fromRGBO(2, 65, 109, 1)),
         color: Colors.white,
       ),
     );

@@ -69,9 +69,9 @@ class _KYCWidgetState extends State<KYCWidget> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Column(children: [Image.asset('assets/images/FaceScan-1.jpg', scale: 5), Text('Keep_your_face_straight'.tr, textAlign: TextAlign.center)]),
+                        Column(children: [Image.asset('packages/add_to_app_flutter_module/assets/images/FaceScan-1.jpg', scale: 5), Text('Keep_your_face_straight'.tr, textAlign: TextAlign.center)]),
                         SizedBox(width: 20),
-                        Column(children: [Image.asset('assets/images/FaceScan-2.jpg', scale: 5), Text('Shoot_in_a_well_lit_area'.tr, textAlign: TextAlign.center)])
+                        Column(children: [Image.asset('packages/add_to_app_flutter_module/assets/images/FaceScan-2.jpg', scale: 5), Text('Shoot_in_a_well_lit_area'.tr, textAlign: TextAlign.center)])
                       ],
                     ),
                   ]),
@@ -84,7 +84,7 @@ class _KYCWidgetState extends State<KYCWidget> {
                       borderRadius: BorderRadius.circular(8),
                       child: _infoController.pathSelfie.value == ''
                           ? Image.asset(
-                              'assets/icons/idCardD.png',
+                              'packages/add_to_app_flutter_module/assets/icons/idCardD.png',
                               height: 300,
                               // fit: BoxFit.cover,
                             )

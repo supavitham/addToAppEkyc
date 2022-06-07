@@ -18,7 +18,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await dotenv.load(fileName: "assets/.env");
+  await dotenv.load(fileName: "packages/add_to_app_flutter_module/assets/.env");
 
   runApp(const MyApp());
 }

@@ -91,7 +91,7 @@ class DeleteDialog extends StatelessWidget {
         ),
         CircleAvatar(
           child: Image.asset(
-            'assets/images/Exclamation.png',
+            'packages/add_to_app_flutter_module/assets/images/Exclamation.png',
             height: 48,
             width: 48,
           ),

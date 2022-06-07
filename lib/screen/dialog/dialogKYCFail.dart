@@ -32,7 +32,7 @@ class DialogKYCFail extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Image.asset('assets/icons/idCardD.png', width: 113, fit: BoxFit.cover),
+            Image.asset('packages/add_to_app_flutter_module/assets/icons/idCardD.png', width: 113, fit: BoxFit.cover),
             SizedBox(height: 10),
             Text(
               'Selfie_with_ID_cardMake_sure'.tr,
@@ -133,7 +133,7 @@ class DialogKYCFail extends StatelessWidget {
           ]),
         ),
         CircleAvatar(
-          child: Image.asset('assets/images/Close.png', height: 48, width: 48),
+          child: Image.asset('packages/add_to_app_flutter_module/assets/images/Close.png', height: 48, width: 48),
           maxRadius: 32,
           backgroundColor: Colors.white,
         ),

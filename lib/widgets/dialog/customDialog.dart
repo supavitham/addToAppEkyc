@@ -107,7 +107,7 @@ class CustomDialog extends StatelessWidget {
       avatar
           ? CircleAvatar(
               child: Image.asset(
-                exclamation ? 'assets/images/Exclamation.png' : 'assets/images/Check.png',
+                exclamation ? 'packages/add_to_app_flutter_module/assets/images/Exclamation.png' : 'packages/add_to_app_flutter_module/assets/images/Check.png',
                 height: 48,
                 width: 48,
               ),
@@ -116,7 +116,7 @@ class CustomDialog extends StatelessWidget {
             )
           : CircleAvatar(
               child: Image.asset(
-                'assets/images/Close.png',
+                'packages/add_to_app_flutter_module/assets/images/Close.png',
                 height: 48,
                 width: 48,
               ),

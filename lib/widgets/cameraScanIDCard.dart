@@ -361,7 +361,7 @@ class _CameraScanIDCardState extends State<CameraScanIDCard> {
                   child: Opacity(
                     opacity: 0.8,
                     child: Image.asset(
-                      isFront ? 'assets/images/crop_front_id_${'language'.tr}.png' : 'assets/images/crop_back_id_${'language'.tr}.png',
+                      isFront ? 'packages/add_to_app_flutter_module/assets/images/crop_front_id_${'language'.tr}.png' : 'packages/add_to_app_flutter_module/assets/images/crop_back_id_${'language'.tr}.png',
                       fit: BoxFit.fitWidth,
                     ),
                   ),

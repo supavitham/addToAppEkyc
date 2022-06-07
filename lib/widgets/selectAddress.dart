@@ -91,7 +91,7 @@ class _SelectAddressState extends State<SelectAddress> with TickerProviderStateM
                     return ListTile(
                       title: Text(data['province'][index]['name${'lang'.tr}']),
                       selected: index == _selectedProvince,
-                      trailing: index == _selectedProvince ? Image(image: AssetImage('assets/images/Check.png'), width: 25, height: 25) : SizedBox(),
+                      trailing: index == _selectedProvince ? Image(image: AssetImage('packages/add_to_app_flutter_module/assets/images/Check.png'), width: 25, height: 25) : SizedBox(),
                       onTap: () {
                         setState(() {
                           _selectedProvince = index;
@@ -125,7 +125,7 @@ class _SelectAddressState extends State<SelectAddress> with TickerProviderStateM
                     return ListTile(
                       title: Text(data['district'][index]['name${'lang'.tr}']),
                       selected: index == _selectedDistrict,
-                      trailing: index == _selectedDistrict ? Image(image: AssetImage('assets/images/Check.png'), width: 25, height: 25) : SizedBox(),
+                      trailing: index == _selectedDistrict ? Image(image: AssetImage('packages/add_to_app_flutter_module/assets/images/Check.png'), width: 25, height: 25) : SizedBox(),
                       onTap: () async {
                         setState(() {
                           _selectedDistrict = index;

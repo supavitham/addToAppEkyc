@@ -11,7 +11,7 @@ Widget pageLoading({String? title}) {
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Image.asset('assets/images/logo_home.jpg', height: 160, width: 180),
+          Image.asset('packages/add_to_app_flutter_module/assets/images/logo_home.jpg', height: 160, width: 180),
           Text(
             title ?? 'System_is_processing'.tr,
             textAlign: TextAlign.center,

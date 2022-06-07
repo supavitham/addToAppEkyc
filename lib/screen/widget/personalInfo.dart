@@ -108,9 +108,9 @@ class PersonalInfo extends StatefulWidget {
 }
 
 class _PersonalInfoState extends State<PersonalInfo> {
-  String checkImage = "assets/images/Check.png";
-  String unCheckImage = "assets/images/uncheck.png";
-  String cameraImage = "assets/icons/camera.png";
+  String checkImage = "packages/add_to_app_flutter_module/assets/images/Check.png";
+  String unCheckImage = "packages/add_to_app_flutter_module/assets/images/uncheck.png";
+  String cameraImage = "packages/add_to_app_flutter_module/assets/icons/camera.png";
   String? workName, workAddress, workAdressSearch;
   String? textBirthday;
   String? ocrResult;
@@ -187,7 +187,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   }
 
   getAddress() async {
-    final response = await rootBundle.loadString('assets/thai-province-data.json');
+    final response = await rootBundle.loadString('packages/add_to_app_flutter_module/assets/thai-province-data.json');
     address = jsonDecode(response);
 
     List dataProvince = address['province'];
