@@ -21,7 +21,10 @@ class _EKYCButtonWidgetState extends State<EKYCButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(EKYCScreen()),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const EKYCScreen()),
+      ),
       child: Container(
         width: widget.widthContainer,
         height: widget.heightContainer,
