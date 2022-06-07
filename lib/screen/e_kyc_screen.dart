@@ -41,7 +41,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
 
   @override
   void initState() {
-    // initDeviceSerial();
+    initDeviceSerial();
     super.initState();
   }
 
