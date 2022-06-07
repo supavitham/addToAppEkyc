@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:add_to_app_flutter_module/bloc/addressBloc.dart';
 import 'package:add_to_app_flutter_module/screen/e_kyc_screen.dart';
 import 'package:add_to_app_flutter_module/screen/start_screen.dart';
 import 'package:add_to_app_flutter_module/utility/lang/translations.dart';
+import 'package:after_layout/after_layout.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,20 +16,42 @@ import 'package:loading_indicator/loading_indicator.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  configLoading();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await dotenv.load(fileName: "packages/add_to_app_flutter_module/assets/.env");
+  // WidgetsFlutterBinding.ensureInitialized();
+  // configLoading();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  // await dotenv.load(fileName: "packages/add_to_app_flutter_module/assets/.env");
 
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+
+
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with AfterLayoutMixin {
+
+  @override
+  void initState() {
+    WidgetsFlutterBinding.ensureInitialized();
+    configLoading();
+    super.initState();
+  }
+
+  @override
+  Future<FutureOr<void>> afterFirstLayout(BuildContext context) async {
+
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    await dotenv.load(fileName: "packages/add_to_app_flutter_module/assets/.env");
+  }
   @override
   Widget build(BuildContext context) {
     return  BlocProvider(
@@ -88,6 +113,7 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
 }
 
 void configLoading() {

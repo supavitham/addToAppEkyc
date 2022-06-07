@@ -1,3 +1,4 @@
+import 'package:add_to_app_flutter_module/main.dart';
 import 'package:add_to_app_flutter_module/screen/e_kyc_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -23,7 +24,7 @@ class _EKYCButtonWidgetState extends State<EKYCButtonWidget> {
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const EKYCScreen()),
+        MaterialPageRoute(builder: (context) => const MyApp()),
       ),
       child: Container(
         width: widget.widthContainer,
