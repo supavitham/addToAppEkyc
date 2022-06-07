@@ -138,48 +138,55 @@ class _CameraScanIDCardState extends State<CameraScanIDCard> {
 
   Future _startLiveFeed() async {
     print(">>>>_startLiveFeed ${Permission.camera}");
-    if (await Permission.camera.request().isGranted) {
-      final camera = await availableCameras().then(
-            (List<CameraDescription> cameras) => cameras.firstWhere(
-              (CameraDescription camera) => camera.lensDirection == _direction,
-        ),
-      );
-      print(">>>>111 $_controller");
-      _controller = CameraController(
-        camera,
-        ResolutionPreset.high,
-        enableAudio: false,
-      );
-      print(">>>>2222 $_controller");
-      _controller!.initialize().then((_) {
-        if (!mounted) {
-          return;
-        }
-        if (widget.scanID!) {
-          isInputScan = true;
-          _controller?.startImageStream(_processCameraImage);
-        }
-        _controller!.setFlashMode(FlashMode.off);
-
-        setState(() {});
-      });
-    } else {
-      if (await Permission.camera.isPermanentlyDenied) {
-        Navigator.pop(context);
-        showDialog(
-          context: context,
-          builder: (context) => CustomDialog(
-            title: 'Camera_is_disabled'.tr,
-            content: 'access_your_camera_Want_to_go_to_settings'.tr,
-            avatar: false,
-            onPressedConfirm: () {
-              Navigator.pop(context);
-              openAppSettings();
-            },
-            buttonCancel: true,
+    try{
+      print(">>>>degub1");
+      if (await Permission.camera.request().isGranted) {
+        print(">>>>if");
+        final camera = await availableCameras().then(
+              (List<CameraDescription> cameras) => cameras.firstWhere(
+                (CameraDescription camera) => camera.lensDirection == _direction,
           ),
         );
+        print(">>>>111 $_controller");
+        _controller = CameraController(
+          camera,
+          ResolutionPreset.high,
+          enableAudio: false,
+        );
+        print(">>>>2222 $_controller");
+        _controller!.initialize().then((_) {
+          if (!mounted) {
+            return;
+          }
+          if (widget.scanID!) {
+            isInputScan = true;
+            _controller?.startImageStream(_processCameraImage);
+          }
+          _controller!.setFlashMode(FlashMode.off);
+
+          setState(() {});
+        });
+      } else {
+        print(">>>>else");
+        if (await Permission.camera.isPermanentlyDenied) {
+          Navigator.pop(context);
+          showDialog(
+            context: context,
+            builder: (context) => CustomDialog(
+              title: 'Camera_is_disabled'.tr,
+              content: 'access_your_camera_Want_to_go_to_settings'.tr,
+              avatar: false,
+              onPressedConfirm: () {
+                Navigator.pop(context);
+                openAppSettings();
+              },
+              buttonCancel: true,
+            ),
+          );
+        }
       }
+    }catch(e){
+      print("eeeeee : $e");
     }
   }
 
