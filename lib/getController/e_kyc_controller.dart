@@ -25,7 +25,7 @@ class EKYCController extends GetxController {
 
   late StreamController<ErrorAnimationType> errorController;
   var currentLanguage = MultiLanguage.th.obs;
-  var selectStepKYC = StepKYC.four.obs;
+  var selectStepKYC = StepKYC.one.obs;
   var processStepKYC = <SelectStepKYC>[].obs;
   var hasErrorOTP = false.obs;
   var expiration = true.obs;
