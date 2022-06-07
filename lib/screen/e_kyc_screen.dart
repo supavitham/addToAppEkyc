@@ -93,7 +93,7 @@ class _EKYCScreenState extends State<EKYCScreen> {
                                 width: 30,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage('packages/add_to_app_flutter_module/packages/add_to_app_flutter_module/assets/images/${index == 0 ? selected ? "Thailand-flag" : "Thailand-flag-bw" : selected ? "United_Kingdom" : "United_Kingdom_bw"}.png'),
+                                    image: AssetImage('packages/add_to_app_flutter_module/assets/images/${index == 0 ? selected ? "Thailand-flag" : "Thailand-flag-bw" : selected ? "United_Kingdom" : "United_Kingdom_bw"}.png'),
                                     fit: BoxFit.fill,
                                   ),
                                   shape: BoxShape.circle,
