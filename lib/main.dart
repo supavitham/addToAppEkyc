@@ -14,6 +14,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'firebase_options.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 Future<void> main() async {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +27,6 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-
-
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -36,7 +35,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with AfterLayoutMixin {
-
   @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized();
@@ -46,15 +44,21 @@ class _MyAppState extends State<MyApp> with AfterLayoutMixin {
 
   @override
   Future<FutureOr<void>> afterFirstLayout(BuildContext context) async {
+    //TODO:
+    if (await Permission.camera.request().isGranted) {
+      // Either the permission was already granted before or the user just granted it.
+    }
 
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    await dotenv.load(fileName: "packages/add_to_app_flutter_module/assets/.env");
+    await dotenv.load(
+        fileName: "packages/add_to_app_flutter_module/assets/.env");
   }
+
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider(
+    return BlocProvider(
       create: (_) => AddressBloc(),
       child: GetMaterialApp(
         title: 'GB E-KYC',
@@ -67,7 +71,8 @@ class _MyAppState extends State<MyApp> with AfterLayoutMixin {
         home: const EKYCScreen(),
         theme: ThemeData(
           primaryColor: const Color(0xFF02416D),
-          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: Colors.white),
           unselectedWidgetColor: const Color(0xFF00598A),
           fontFamily: 'Kanit',
           dividerTheme: const DividerThemeData(color: Colors.grey, space: 0),
@@ -76,7 +81,8 @@ class _MyAppState extends State<MyApp> with AfterLayoutMixin {
             elevation: 1,
             systemOverlayStyle: SystemUiOverlayStyle.dark,
             backgroundColor: Colors.white,
-            titleTextStyle: TextStyle(color: Colors.black, fontSize: 17, fontFamily: 'kanit'),
+            titleTextStyle: TextStyle(
+                color: Colors.black, fontSize: 17, fontFamily: 'kanit'),
             iconTheme: IconThemeData(color: Colors.black),
           ),
           buttonTheme: ButtonThemeData(
@@ -113,20 +119,20 @@ class _MyAppState extends State<MyApp> with AfterLayoutMixin {
       ),
     );
   }
-
 }
 
 void configLoading() {
   EasyLoading.instance
     ..loadingStyle = EasyLoadingStyle.light
-  // ..maskType = EasyLoadingMaskType.custom
-  // ..maskColor = Colors.black.withOpacity(0.1)
+    // ..maskType = EasyLoadingMaskType.custom
+    // ..maskColor = Colors.black.withOpacity(0.1)
     ..radius = 10
     ..contentPadding = const EdgeInsets.all(14)
     ..indicatorWidget = Container(
       height: 50,
       width: 50,
-      decoration: const BoxDecoration(color: Colors.transparent, shape: BoxShape.circle),
+      decoration: const BoxDecoration(
+          color: Colors.transparent, shape: BoxShape.circle),
       child: const LoadingIndicator(
         indicatorType: Indicator.ballRotateChase,
         colors: [Color(0xFFFF9F02)],
