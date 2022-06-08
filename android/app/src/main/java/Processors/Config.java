@@ -27,8 +27,8 @@ import okhttp3.Callback;
 public class Config {
     public static String productionKeyText = "# FaceTec Mobile SDK license\n" +
             "appId      = com.gbwallet,com.gbprimepay.gbwallet,com.gbekyc.gbEKyc,com.gb_e_kyc.gb_e_kyc\n" +
-            "expiryDate = 2022-05-10\n" +
-            "key        = 00304502203d055957c0e687b1b61ae114ca0111d0d46f77721bc8e7c5762eecc97e76a557022100c507fb4ab0bd6db0c4886c6e8ea18f4845806bea7141cd31f87f064fb4494b47";
+            "expiryDate = 2022-07-10\n" +
+            "key        = 003044022029b42fa16638e0ff74bc80775a9d408100752f7ae628c1a0ba7ad4f64a8a79650220716a579d64491f404977ddafd7eab2eaacc424a946a9cca6920fcc448d732654";
 
     public static String DeviceKeyIdentifier = "d0ROAIJuEB3zug5WFGF0iKzXPpdyeB4D"; //Prod
     //  public static String DeviceKeyIdentifier = "dCevDS3lwvVPXTBurpz7W8ytnGtuvvGX"; //Dev
