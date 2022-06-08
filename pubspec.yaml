@@ -48,9 +48,8 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/icons/
     - assets/thai-province-data.json
-    - .env
+    - assets/.env
 
   module:
     androidX: true
